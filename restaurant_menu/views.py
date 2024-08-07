@@ -6,6 +6,10 @@ class MenuList(generic.ListView):
     queryset = Items.objects.order_by('-date_created')
     template_name = "index.html"
 
+    def get_context_data(self):
+        context = {'meals': 'Pizza'}
+        return context
+
 class MenuItemDetail(generic.DetailView):
     model = Items
     template_name = "menu_item_details.html"
