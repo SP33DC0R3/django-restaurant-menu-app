@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Items
+from .models import Item
 
 class MenuList(generic.ListView):
-    queryset = Items.objects.order_by('-date_created')
+    queryset = Item.objects.order_by('-date_created')
     template_name = "index.html"
 
     def get_context_data(self):
@@ -11,5 +11,5 @@ class MenuList(generic.ListView):
         return context
 
 class MenuItemDetail(generic.DetailView):
-    model = Items
+    model = Item
     template_name = "menu_item_details.html"
