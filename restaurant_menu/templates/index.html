@@ -9,8 +9,14 @@
     {% for meal in meals %}
         <h2>{{ meal.1 }}</h2>
         {% for row in item_list %}
-            <h3>{{ row.meal }}</h3>
-            <p>{{ row.ingredients }}<p/>
+            {% if row.meal_type == meal.0 %}
+                {% if row.status == 1 %}
+                    <h3>{{ row.meal }}</h3>
+                {% else  %}
+                    <h3><del>{{ row.meal }}</del></h3>
+                {% endif %}
+                <p>{{ row.ingredients }}<p/>
+            {% endif %}
         {% endfor %}
     {% endfor %}
 </body>
