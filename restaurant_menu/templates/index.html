@@ -5,15 +5,15 @@
     <title>Restaurant Menu</title>
 </head>
 <body>
-    <h1>Restaurant <Menu></Menu></h1>
+    <h1>Restaurant Menu</h1>
     {% for meal in meals %}
         <h2>{{ meal.1 }}</h2>
         {% for row in item_list %}
             {% if row.meal_type == meal.0 %}
                 {% if row.status == 1 %}
-                    <h3>{{ row.meal }}</h3>
+                    <a href="{% url 'menu_item' slug=row.slug %}"><h3>{{ row.meal }}</h3></a>
                 {% else  %}
-                    <h3><del>{{ row.meal }}</del></h3>
+                    <a href="{% url 'menu_item' slug=row.slug %}"><h3><del>{{ row.meal }}</del></h3></a>
                 {% endif %}
                 <p>{{ row.ingredients }}<p/>
             {% endif %}

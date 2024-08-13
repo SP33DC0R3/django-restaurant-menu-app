@@ -6,6 +6,7 @@ class MenuItemAdmin(admin.ModelAdmin):
     list_display = ("meal", "status", "author")
     list_filter = ("status", "author")
     search_fields = ("meal", "ingredients")
+    exclude = ("slug",)
 
 
 admin.site.register(Item, MenuItemAdmin)
