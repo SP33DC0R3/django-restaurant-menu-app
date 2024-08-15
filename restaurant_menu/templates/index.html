@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Restaurant Menu</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
     <h1>Restaurant Menu</h1>
-    {% for meal in meals %}
-        <h2>{{ meal.1 }}</h2>
-        {% for row in item_list %}
-            {% if row.meal_type == meal.0 %}
-                {% if row.status == 1 %}
-                    <a href="{% url 'menu_item' slug=row.slug %}"><h3>{{ row.meal }}</h3></a>
-                {% else  %}
-                    <a href="{% url 'menu_item' slug=row.slug %}"><h3><del>{{ row.meal }}</del></h3></a>
+    <ul class="list-group list-group-flush">
+        {% for meal in meals %}
+            <h2 class="pt-5">{{ meal.1 }}</h2>
+            {% for row in item_list %}
+                {% if row.meal_type == meal.0 %}
+                    {% if row.status == 1 %}
+                        <li class="list-group-item d-flex justify-content-between align-item-center border-0 pb-0">
+                            <a href="{% url 'menu_item' slug=row.slug %}"><h3>{{ row.meal }}</h3></a>
+                            <span class="badge bg-primary rounded-pill">{{ row.price }}</span>
+                        </li>
+                    {% else  %}
+                        <li class="list-group-item d-flex justify-content-between align-item-center border-0 pb-0">
+                            <a href="{% url 'menu_item' slug=row.slug %}"><h3><del>{{ row.meal }}</del></h3></a>
+                            <span class="badge bg-primary rounded-pill">{{ row.price }}</span>
+                        </li>
+                    {% endif %}
+                    <li class="list-group-item pt-0">
+                        <p>{{ row.ingredients }}<p/>
+                    </li>
                 {% endif %}
-                <p>{{ row.ingredients }}<p/>
-            {% endif %}
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
-</body>
-</html>
+    </ul>
+</div>
+{% endblock content %}
