@@ -10,12 +10,12 @@
                     {% if row.status == 1 %}
                         <li class="list-group-item d-flex justify-content-between align-item-center border-0 pb-0">
                             <a href="{% url 'menu_item' slug=row.slug %}"><h3>{{ row.meal }}</h3></a>
-                            <span class="badge bg-primary rounded-pill">{{ row.price }}</span>
+                            <span class="badge bg-primary rounded-pill custom-badge">{{ row.price }}</span>
                         </li>
                     {% else  %}
                         <li class="list-group-item d-flex justify-content-between align-item-center border-0 pb-0">
                             <a href="{% url 'menu_item' slug=row.slug %}"><h3><del>{{ row.meal }}</del></h3></a>
-                            <span class="badge bg-primary rounded-pill">{{ row.price }}</span>
+                            <span class="badge bg-primary rounded-pill custom-badge">{{ row.price }}</span>
                         </li>
                     {% endif %}
                     <li class="list-group-item pt-0">
